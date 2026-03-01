@@ -1,0 +1,104 @@
+URxvt.transparent: true
+! Zenburn
+#define bg #3f3f3f
+#define fg #dcdccc
+
+#define blk #3f3f3f
+#define bblk #000000
+#define red #cc9393
+#define rred #dca3a3
+#define grn #7f9f7f
+#define ggrn #bfebbf
+#define ylw #d0bf8f
+#define yylw #f0dfaf
+#define blu #6ca0a3
+#define bblu #8cd0d3
+#define mag #dc8cc3
+#define mmag #dc8cc3
+#define cyn #93e0e3
+#define ccyn #93e0e3
+#define wht #dcdccc
+#define wwht #ffffff
+
+urxvt*geometry: 220x52
+
+URxvt*font:xft:Deja\ Vu\ Sans\ Mono:pixelsize=12:style=regular
+URxvt*boldFont:xft:Deja\ Vu\ Sans\ Mono:pixelsize=12:style=regular
+
+Xft.antialias: 1
+Xft.autohint: 0
+Xft.dpi: 96
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+
+URxvt*lineSpace: 1
+URxvt*depth: 32
+URxvt*background: bg
+URxvt*foreground: fg
+URxvt*borderless: 1
+URxvt*scrollBar: false
+URxvt*scrollBar_right: false
+URxvt*saveLines: 5000
+URxvt*termName: rxvt-256color
+URxvt*cursorColor: #aaaaaa
+URxvt*colorUL: #366060
+URxvt*underlineColor: #dfaf8f
+
+! Black + DarkGrey
+URxvt.color0: blk
+URxvt.color8: bblk
+! Red
+URxvt.color1: red
+URxvt.color9: rred
+! Green
+URxvt.color2: grn
+URxvt.color10: ggrn
+! Yellow
+URxvt.color3: ylw
+URxvt.color11: yylw
+! Blue
+URxvt.color4: blu
+URxvt.color12: bblu
+! Magenta
+URxvt.color5: mag
+URxvt.color13: mmag
+! Cyan
+URxvt.color6: cyn
+URxvt.color14: ccyn
+! LightGrey + white
+URxvt.color7: wht
+URxvt.color15: wwht
+
+URxvt.url-launcher: /run/current-system/profile/bin/qutebrowser
+URxvt.matcher.button: 1
+URxvt*loginShell: true
+
+! Colors
+*background: bg
+*foreground: fg
+*cursorColor: #aaaaaa
+
+! Black + DarkGrey
+*color0: blk
+*color8: bblk
+! Red
+*color1: red
+*color9: rred
+! Green
+*color1: grn
+*color10: ggrn
+! Yellow
+*color3: ylw
+*color11: yylw
+! Blue
+*color4: blu
+*color12: bblu
+! Magenta
+*color5: mag
+*color13: mmag
+! Cyan
+*color6: cyn
+*color14: ccyn
+! LightGrey + white
+*color7: wht
+*color15: wwht

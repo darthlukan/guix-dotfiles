@@ -14,7 +14,7 @@ A few things to watch out for, the following were pulled manually
 and not packaged ["The Guix Way"](https://guix.gnu.org/manual/devel/en/html_node/Defining-Packages.html):
 1. [Quicklisp](https://www.quicklisp.org/beta/)
 2. [stumpwm-contrib](https://github.com/stumpwm/stumpwm-contrib)
-3. This machine includes the use of non-free (as in freedom) software and hardware$^1^.
+3. This machine includes the use of non-free (as in freedom) software and hardware[^1].
 
 ## Layout
 
@@ -58,7 +58,7 @@ on how it handles system and channel configurations (because the docs leave some
 I decided to keep it simple. "Boo" for manual toil.
 
 ## Footnotes
-^1^ In an ideal world we wouldn't need to use non-free blobs to make hardware work, or
+[^1] In an ideal world we wouldn't need to use non-free blobs to make hardware work, or
 need to use proprietary software in order to communicate.
 
 ## License

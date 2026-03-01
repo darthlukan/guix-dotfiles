@@ -32,8 +32,8 @@
  ;; under their own account: use 'guix search KEYWORD' to search
  ;; for packages and 'guix install PACKAGE' to install a package.
  (packages
-  (specifications->packages
-   (append
+  (append
+   (specifications->packages
     (list "sway"
           "sbcl"
           "stumpwm"
@@ -50,8 +50,8 @@
           "emacs"
           "emacs-guix"
           "ranger"
-          "pcmanfm")
-    %base-packages)))
+          "pcmanfm"))
+   %base-packages))
 
  ;; Below is the list of system services.  To search for available
  ;; services, run 'guix system search KEYWORD' in a terminal.

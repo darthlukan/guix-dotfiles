@@ -22,8 +22,10 @@ URxvt.transparent: true
 
 urxvt*geometry: 220x52
 
-URxvt*font:xft:Deja\ Vu\ Sans\ Mono:pixelsize=12:style=regular
-URxvt*boldFont:xft:Deja\ Vu\ Sans\ Mono:pixelsize=12:style=regular
+URxvt*font:xft:Deja\ Vu\ Sans\ Mono:pixelsize=12:style=Book,\
+           xft:Symbols\ Nerd\ Font\ Mono:pixelsize=12:style=Regular
+URxvt*boldFont:xft:Deja\ Vu\ Sans\ Mono:pixelsize=12:style=Bold,\
+               xft:Symbols\ Nerd\ Font\ Mono:pixelsize=12:style=Bold
 
 Xft.antialias: 1
 Xft.autohint: 0

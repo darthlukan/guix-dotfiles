@@ -94,7 +94,7 @@
 (define-key *top-map* (kbd "s-(") "gmove 9")
 (define-key *top-map* (kbd "s-)") "gmove 10")
 ;; Conveniences
-(define-key *top-map* (kbd "s-RET") "exec urxvt")
+(define-key *top-map* (kbd "s-RET") "exec alacritty")
 (define-key *top-map* (kbd "s-Q") "delete-window")
 (define-key *top-map* (kbd "s-K") "kill-window")
 (define-key *top-map* (kbd "s-G") "gkill") ; Kill the current group

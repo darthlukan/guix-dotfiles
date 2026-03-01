@@ -1,0 +1,23 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/zenburn.toml"
+]
+
+[env]
+TERM = "alacritty"
+
+[window]
+decorations_theme_variant = "None"
+opacity = 0.8
+dynamic_title = true
+class.instance = "Alacritty"
+class.general = "Alacritty"
+
+[scrolling]
+history = 10000
+
+[terminal]
+shell = {program = "/home/dad/.guix-home/profile/bin/bash", args = ["--login"]}
+
+[font]
+size = 9

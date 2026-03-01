@@ -53,6 +53,9 @@
                     "libportal"
                     "pipewire"
                     "wireplumber"
+                    "font-nerd-symbols"
+                    "emacs-show-font"
+                    "alacritty"
                     "xrdb"
                     "rxvt-unicode"
                     "scrot"
@@ -90,7 +93,8 @@
 
       (service home-xdg-configuration-files-service-type
                `(("gdb/gdbinit" ,%default-gdbinit)
-                 ("stumpwm/config" ,(local-file "files/.stumpwm.d/init.lisp"))))
+                 ("stumpwm/config" ,(local-file "files/.stumpwm.d/init.lisp"))
+                 ("alacritty/alacritty.toml" ,(local-file "files/alacritty.toml"))))
 
       (service home-dbus-service-type)
 

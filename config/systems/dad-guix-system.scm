@@ -31,23 +31,27 @@
  ;; Packages installed system-wide.  Users can also install packages
  ;; under their own account: use 'guix search KEYWORD' to search
  ;; for packages and 'guix install PACKAGE' to install a package.
- (packages (append (list (specification->package "sway")
-                         (specification->package "sbcl")
-                         stumpwm
-                         (specification->package "font-dejavu")
-                         (specification->package "wmenu")
-                         (specification->package "foot")
-                         (specification->package "qutebrowser")
-                         (specification->package "git")
-                         (specification->package "vim")
-                         (specification->package "vim-guix-vim")
-                         (specification->package "fd")
-                         (specification->package "shellcheck")
-                         (specification->package "markdown")
-                         (specification->package "emacs")
-                         (specification->package "emacs-guix")
-                         (specification->package "ranger")
-                         (specification->package "pcmanfm")) %base-packages))
+ (packages
+  (specifications->packages
+   (append
+    (list "sway"
+          "sbcl"
+          "stumpwm"
+          "font-dejavu"
+          "wmenu"
+          "foot"
+          "qutebrowser"
+          "git"
+          "vim"
+          "vim-guix-vim"
+          "fd"
+          "shellcheck"
+          "markdown"
+          "emacs"
+          "emacs-guix"
+          "ranger"
+          "pcmanfm")
+    %base-packages)))
 
  ;; Below is the list of system services.  To search for available
  ;; services, run 'guix system search KEYWORD' in a terminal.

@@ -111,16 +111,21 @@
       *message-window-gravity* :center
       *mouse-focus-policy* :sloppy
       *window-format* "%m%n%s%c"
-      *screen-mode-line-format* (list "[%g]" "%W" "^>%d")
+      *screen-mode-line-format* (list "%d " "[%g]" "%W")
       *time-modeline-string* "%a %b %e %Y %R"
       *mode-line-timeout* 2)
 
-;; Enable the modeline
+;; Personalize the startup message
+(setf *startup-message*
+      "^2*Welcome to The ^BStump^b ^BW^bindow ^BM^banager ^3*^BBrian^b!
+Press ^5*~a ?^2* for help.")
+
+;; Modeline
 (enable-mode-line (current-screen) (current-head) t)
 ;; TODO: Figure out why this tends to cover the date string
 (stumptray::stumptray)
 
-;; Set Background
+;; Autostart some things
 (run-shell-command "feh --bg-fill /run/current-system/profile/share/backgrounds/guix/guix-checkered-16-9.svg")
 (run-shell-command "xrdb -merge ~/.Xdefaults")
 (run-shell-command "emacs")

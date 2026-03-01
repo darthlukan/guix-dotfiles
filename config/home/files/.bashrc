@@ -18,7 +18,7 @@ if [[ $- != *i* ]]; then
     return 0
 fi
 
-for i in $HOME/bashrc.d/*.sh; do
+for i in "$HOME"/bashrc.d/*.sh; do
     [[ -r $i ]] && source "$i"
 done
 unset i

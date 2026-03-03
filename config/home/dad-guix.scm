@@ -6,6 +6,7 @@
   #:use-module (gnu home services shells)
   #:use-module (gnu home services sway)
   #:use-module (gnu home services sound)
+  #:use-module (gnu home services ssh)
   #:use-module (gnu services)
   #:use-module (gnu system shadow)
   #:use-module (gnu packages))
@@ -98,8 +99,31 @@
 
       (service home-dbus-service-type)
 
-      (service home-pipewire-service-type))
+      (service home-pipewire-service-type)
 
+      (service home-openssh-service-type
+               (home-openssh-configuration
+                (add-keys-to-agent "yes")
+                (hosts
+                 (list (openssh-host (name "dadpi")
+                                     (host-name "dadpi.local")
+                                     (user "dad")
+                                     (identity-file "~/.ssh/id_rsa.pub")
+                                     (extra-content "PreferredAuthentications publickey"))
+                       (openssh-host (name "pihole")
+                                     (host-name "pihole.local")
+                                     (user "pi")
+                                     (identity-file "~/.ssh/id_rsa.pub")
+                                     (extra-content "PreferredAuthentications publickey"))
+                       (openssh-host (name "pihole2")
+                                     (host-name "pihole2.local")
+                                     (user "pi")
+                                     (identity-file "~/.ssh/id_rsa.pub")
+                                     (extra-content "PreferredAuthentications publickey"))
+                       (openssh-host (name "octopi")
+                                     (host-name "octopi.local")
+                                     (identity-file "~/.ssh/id_rsa.pub")
+                                     (extra-content "PreferredAuthentications publickey")))))))
      %base-home-services))))
 
 home-config

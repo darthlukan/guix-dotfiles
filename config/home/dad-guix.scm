@@ -7,65 +7,70 @@
   #:use-module (gnu home services sway)
   #:use-module (gnu home services sound)
   #:use-module (gnu home services ssh)
+  #:use-module (gnu home services gnupg)
   #:use-module (gnu services)
   #:use-module (gnu system shadow)
-  #:use-module (gnu packages))
+  #:use-module (gnu packages)
+  #:use-module (gnu packages gnupg))
 
 (define home-config
   (home-environment
-   (packages (specifications->packages
-              (list "clang-toolchain" ; provides `cc` unlike `clang` or `gcc-toolchain`
-                    "cmake"
-                    "make"
-                    "gcc-toolchain"
-                    "libtool"
-                    "glslang"
-                    "ripgrep"
-                    "sbcl"
-                    "go"
-                    "gopls"
-                    "go-github-com-fatih-gomodifytags"
-                    "gore"
-                    "rust"
-                    "python"
-                    "python-pip"
-                    "python-black"
-                    "python-pytest"
-                    "python-pyflakes"
-                    "python-isort"
-                    "ncurses"
-                    "node"
-                    "perl"
-                    "shfmt"
-                    "htop"
-                    "tree"
-                    "neofetch"
-                    "grimshot"
-                    "curl"
-                    "wget"
-                    "gnupg"
-                    "bitwarden-desktop"
-                    "flatpak"
-                    "imagemagick"
-                    "feh"
-                    "xdg-utils"
-                    "xdg-desktop-portal"
-                    "xdg-desktop-portal-wlr"
-                    "libportal"
-                    "pipewire"
-                    "wireplumber"
-                    "font-nerd-symbols"
-                    "emacs-show-font"
-                    "alacritty"
-                    "xrdb"
-                    "rxvt-unicode"
-                    "scrot"
-                    "sbcl-stumpwm-ttf-fonts"
-                    "sbcl-stumpwm-stumptray"
-                    "sbcl-stumpwm-screenshot"
-                    "stumpish"
-                    "stumpwm")))
-
+   (packages
+    (specifications->packages
+     (list
+      "clang-toolchain"        ; provides `cc` unlike `clang` or `gcc-toolchain`
+      "cmake"
+      "make"
+      "gcc-toolchain"
+      "libtool"
+      "glslang"
+      "ripgrep"
+      "sbcl"
+      "go"
+      "gopls"
+      "go-github-com-fatih-gomodifytags"
+      "gore"
+      "rust"
+      "python"
+      "python-pip"
+      "python-black"
+      "python-pytest"
+      "python-pyflakes"
+      "python-isort"
+      "ncurses"
+      "node"
+      "perl"
+      "shfmt"
+      "htop"
+      "tree"
+      "neofetch"
+      "grimshot"
+      "curl"
+      "wget"
+      "gnupg"
+      "pinentry"
+      "emacs-pinentry"
+      "bitwarden-desktop"
+      "flatpak"
+      "imagemagick"
+      "feh"
+      "xdg-utils"
+      "xdg-desktop-portal"
+      "xdg-desktop-portal-wlr"
+      "libportal"
+      "pipewire"
+      "wireplumber"
+      "font-nerd-symbols"
+      "emacs-show-font"
+      "alacritty"
+      "xrdb"
+      "rxvt-unicode"
+      "scrot"
+      "sbcl-stumpwm-ttf-fonts"
+      "sbcl-stumpwm-stumptray"
+      "sbcl-stumpwm-screenshot"
+      "stumpish"
+      "stumpwm")))
    (services
     (append
      (list
@@ -77,6 +82,7 @@
                    ("XDG_CONFIG_HOME" . "$HOME/.config")
                    ("XDG_DATA_DIRS" . "$HOME/.local/share:$HOME/.local/share/flatpak/exports/share")
                    ("SBCL_HOME" . "$HOME/.guix-home/profile/lib/sbcl/")
+                   ("GPG_TTY" . "$(tty)")
                    ("PATH" . "$HOME/bin:$HOME/.config/emacs/bin:$PATH")))
                 (aliases
                  '(("ls" . "ls -aF --color=always")))
@@ -123,7 +129,13 @@
                        (openssh-host (name "octopi")
                                      (host-name "octopi.local")
                                      (identity-file "~/.ssh/id_rsa.pub")
-                                     (extra-content "PreferredAuthentications publickey")))))))
+                                     (extra-content "PreferredAuthentications publickey"))))))
+
+      (service home-gpg-agent-service-type
+               (home-gpg-agent-configuration
+                (pinentry-program
+                 (file-append pinentry "$HOME/.guix-home/profile/bin/pinentry"))
+                (ssh-support? #t))))
      %base-home-services))))
 
 home-config

@@ -1,8 +1,9 @@
 (use-modules (gnu)
              (nongnu packages linux)
-             (nongnu system linux-initrd))
+             (nongnu system linux-initrd)
+             (gnu system accounts))
 (use-package-modules wm)
-(use-service-modules cups desktop networking ssh xorg)
+(use-service-modules containers cups desktop networking ssh xorg)
 
 (operating-system
  (locale "en_US.utf8")
@@ -25,7 +26,8 @@
                 (group "users")
                 (home-directory "/home/dad")
                 (supplementary-groups '("wheel" "netdev" "audio" "video"
-                                        "dialout" "disk" "pipewire" "input")))
+                                        "dialout" "disk" "pipewire" "input"
+                                        "cgroup")))
                %base-user-accounts))
 
  ;; Packages installed system-wide.  Users can also install packages
@@ -50,7 +52,11 @@
           "emacs"
           "emacs-guix"
           "ranger"
-          "pcmanfm"))
+          "pcmanfm"
+          "conmon"
+          "netavark"
+          "podman"
+          "podman-compose"))
    %base-packages))
 
  ;; Below is the list of system services.  To search for available
@@ -82,7 +88,15 @@
                                (list
                                 (local-file
                                  "./nonguix-signing-key.pub"))
-                               %default-authorized-guix-keys)))))))
+                               %default-authorized-guix-keys)))))
+
+          (service rootless-podman-service-type
+                   (rootless-podman-configuration
+                    (subgids
+                     (list (subid-range (name "dad"))))
+                    (subuids
+                     (list (subid-range (name "dad"))))))))
+
 
  (bootloader (bootloader-configuration
               (bootloader grub-efi-bootloader)

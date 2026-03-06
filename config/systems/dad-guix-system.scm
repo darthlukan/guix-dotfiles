@@ -17,7 +17,10 @@
           (user-group
            (name "pipewire")
            (system? #t))
-          %base-groups))
+          (cons* (user-group
+                  (name "cgroup")
+                  (system? #t))
+                 %base-groups)))
 
  ;; The list of user accounts ('root' is implicit).
  (users (cons* (user-account

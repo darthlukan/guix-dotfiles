@@ -27,17 +27,21 @@
               (targets (list "/boot/efi"))
               (keyboard-layout keyboard-layout)))
  (swap-devices (list (swap-space
-                      (target (uuid "10a7bd55-12f0-4b17-a287-21f3a49c42ff")))))
+                      (target (uuid "4c65ad73-61ed-4ef5-805f-b334f7da2365")))))
  ;; The list of file systems that get "mounted".  The unique
  ;; file system identifiers there ("UUIDs") can be obtained
  ;; by running 'blkid' in a terminal.
  (file-systems (cons* (file-system
                        (mount-point "/")
-                       (device (uuid "3527a79f-ff4c-4a8f-a11e-188ced67539d" 'ext4))
+                       (device (uuid "d3ccb3af-1485-44bb-bca7-8db5c311fb9d" 'ext4))
+                       (type "ext4"))
+                      (file-system
+                       (mount-point "/home")
+                       (device (uuid "a9afa643-8371-48fa-b209-fda526179486" 'ext4))
                        (type "ext4"))
                       (file-system
                        (mount-point "/boot/efi")
-                       (device (uuid "5894-B18E" 'fat32))
+                       (device (uuid "D831-3F4D" 'fat32))
                        (type "vfat")) %base-file-systems))
  ;; Additional Groups for our user
  (groups (cons* (user-group

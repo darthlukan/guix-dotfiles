@@ -18,12 +18,13 @@
    (packages
     (specifications->packages
      (list
-      "clang-toolchain"        ; provides `cc` unlike `clang` or `gcc-toolchain`
+      "clang-toolchain"
       "cmake"
       "make"
       "gcc-toolchain"
       ;; "arm-none-eabi-toolchain"
       "libtool"
+      "patchelf"
       "glslang"
       "ripgrep"
       "sbcl"
@@ -74,8 +75,10 @@
       "alacritty"
       "xrdb"
       "rxvt-unicode"
+      "ghostty"
       "scrot"
       "asciinema"
+      "direnv"
       "sbcl-stumpwm-ttf-fonts"
       "sbcl-stumpwm-stumptray"
       "sbcl-stumpwm-screenshot"
@@ -94,6 +97,7 @@
                    ("XDG_DATA_DIRS" . "$HOME/.local/share:$HOME/.local/share/flatpak/exports/share")
                    ("SBCL_HOME" . "$HOME/.guix-home/profile/lib/sbcl/")
                    ("GPG_TTY" . "$(tty)")
+                   ("LD_LIBRARY_PATH" . "$HOME/.guix-home/profile/lib:$LD_LIBRARY_PATH")
                    ("PATH" . "$HOME/bin:$HOME/.config/emacs/bin:$PATH")))
                 (aliases
                  '(("ls" . "ls -aF --color=always")))

@@ -41,10 +41,10 @@
 
 (clear-window-placement-rules)
 
-(define-frame-preference "Emacs" (nil t t :class "Tiling"))
-(define-frame-preference "Term" (nil t t :class "Tiling"))
-(define-frame-preference "Web" (nil t t :class "Tiling"))
-(define-frame-preference "Misc" (nil t t :class "Tiling"))
+(define-frame-preference "Emacs" (nil t t :class "Emacs"))
+(define-frame-preference "Term" (nil t t :class "com.mitchelh.ghostty"))
+(define-frame-preference "Web" (nil t t :class "qutebrowser"))
+(define-frame-preference "Misc" (nil t t :class "discord"))
 
 ;; Theme
 (setf *colors*
